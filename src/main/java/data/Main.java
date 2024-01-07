@@ -4,6 +4,7 @@ import challenges.CarOps;
 import challenges.StudentOps;
 import domain.Car;
 import domain.Student;
+import org.checkerframework.checker.units.qual.C;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,115 +18,117 @@ import static data.FetchData.getStudentList;
 public class Main {
     public static void main(String[] args) throws IOException {
         List<Car> cars = getCarList();
-        System.out.println("Question1: +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
-        getCarList().stream()
-                .limit(5)
-                .forEach(System.out::println);
-        System.out.println("++++++++++++++++");
-        getStudentList().stream()
-                .limit(5)
-                .forEach(System.out::println);
-
-        System.out.println("Question2 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<Student> sortedStudents = StudentOps.sortStudentsByAge(getStudentList());
-
-        if (sortedStudents != null) {
-            sortedStudents.forEach(student -> {
-                System.out.println(student.getFirst_name() + ": " + student.getAge());
-            });
-        }
-
-//        System.out.println("Question21 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-//        List<Car> SpecificMake = carWithSpecificMake(cars);
-//        System.out.println(SpecificMake);
-//
-
-        System.out.println("Question31 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Map<String, Long> carCountsByMake = CarOps.countCarsByMake(cars);
-
-        carCountsByMake.forEach((make, count) -> {
-            System.out.println(make + ": " + count);
-        });
-
-        System.out.println("Question32 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        double avgPrice = averagePriceOfCars(cars);
-        System.out.println("The average of car price is " + avgPrice);
-
-
-        System.out.println("Question33 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        double sumOfPrice = sumOfPriceOfCars(cars);
-        System.out.println("The sum of price of cars is " + sumOfPrice);
-
-        System.out.println("Question34 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        boolean isBlueCar = carsWithBlueColor(cars);
-        System.out.println("is there a blue car ? " + isBlueCar);
-
-        System.out.println("Question35 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        boolean isExpensive = isAllCarExpensive(cars);
-        System.out.println("is there very expensive car ? "+ isExpensive);
-
-        System.out.println("Question36 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        boolean isItMatch = isThisConditionMatch(cars);
-        System.out.println("is Sonata a match ? " + isItMatch);
-
-        System.out.println("Question37 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<Car> skippedCar = skippingTheFirst5Cars(cars, 5);
+        System.out.println("Question 1 =====================");
+        System.out.println(StudentOps.filterStudentsByGender(getStudentList()));
+        System.out.println("Question 2 =====================");
+        System.out.println(StudentOps.sortStudentsByAge(getStudentList()));
+        System.out.println("Question 3 =====================");
+        System.out.println(StudentOps.averageAge(getStudentList()));
+        System.out.println("Question 4 =====================");
+        StudentOps.printNamesOfStudent(getStudentList());
+        System.out.println("Question 5 =====================");
+        System.out.println(StudentOps.groupByGender(getStudentList()));
+        System.out.println("Question 6 =====================");
+        System.out.println(StudentOps.maximumAge(getStudentList()));
+        System.out.println("Question 7 =====================");
+        System.out.println(StudentOps.convertTomap(getStudentList()));
+        System.out.println("Question 8 =====================");
+        System.out.println(StudentOps.studentEmail(getStudentList()));
+        System.out.println("Question 9 =====================");
+        System.out.println(StudentOps.ifAnyStudentIsAdult(getStudentList()));
+        System.out.println("Question 10 =====================");
+        System.out.println(StudentOps.countStudentsByGender(getStudentList()));
+        System.out.println("Question 11 =====================");
+        System.out.println(StudentOps.youngestFemaleStudent(getStudentList()));
+        System.out.println("Question 12 =====================");
+        System.out.println(StudentOps.joinStudentNames(getStudentList()));
+        System.out.println("Question 13 =====================");
+        System.out.println(StudentOps.sumOfAge(getStudentList()));
+        System.out.println("Question 14 =====================");
+        System.out.println(StudentOps.ifAllStudentAreAdult(getStudentList()));
+        System.out.println("Question 15 =====================");
+        System.out.println(StudentOps.oldestStudent(getStudentList()));
+        System.out.println("Question 16 =====================");
+        System.out.println(StudentOps.firstNameToUpperCase(getStudentList()));
+        System.out.println("Question 17 =====================");
+        System.out.println(StudentOps.findStudentByID(getStudentList()));
+        System.out.println("Question 18 =====================");
+        System.out.println(StudentOps.countOfNumberForEachAge(getStudentList()));
+        System.out.println("Question 19 =====================");
+        System.out.println(StudentOps.groupByAge(getStudentList()));
+        System.out.println("Question 20 =====================");
+        System.out.println(StudentOps.calculateAgeStandardDeviation(getStudentList()));
+        System.out.println("Question 21 =====================");
+        System.out.println(CarOps.carWithSpecificMake(getCarList()));
+        System.out.println("Question 22 =====================");
+        System.out.println(CarOps.carsFromSpecificYear(getCarList()));
+        System.out.println("Question 23 =====================");
+        System.out.println(CarOps.carsWithinPriceRange(getCarList()));
+        System.out.println("Question 24 =====================");
+        System.out.println(CarOps.listOfCarModels(getCarList()));
+        System.out.println("Question 25 =====================");
+        System.out.println(CarOps.listOfCarsInUppercase(getCarList()));
+        System.out.println("Question 26 =====================");
+        System.out.println(CarOps.sortByYearAscending(getCarList()));
+        System.out.println("Question 27 =====================");
+        System.out.println(CarOps.sortPriceInDescendingOrder(getCarList()));
+        System.out.println("Question 28 =====================");
+        System.out.println(CarOps.carWithTheHighestPrice(getCarList()));
+        System.out.println("Question 29 =====================");
+        System.out.println(CarOps.carWithLowestPrice(getCarList()));
+        System.out.println("Question 30 =====================");
+        System.out.println(CarOps.groupByMake(getCarList()));
+        System.out.println("Question 31 =====================");
+        System.out.println(CarOps.countCarsByMake(getCarList()));
+        System.out.println("Question 32 =====================");
+        System.out.println(CarOps.averagePriceOfAllCars(getCarList()));
+        System.out.println("Question 33 =====================");
+        System.out.println(CarOps.sumOfCarsPrices(getCarList()));
+        System.out.println("Question 34 =====================");
+        System.out.println(CarOps.checkIfAnyCarIsBlue(getCarList()));
+        System.out.println("Question 35 =====================");
+        System.out.println(CarOps.checkIfAnyCarIsExpensive(getCarList()));
+        System.out.println("Question 36 =====================");
+        System.out.println(CarOps.nonOfCarMatchThisCondition(getCarList()));
+        System.out.println("Question 37 =====================");
+        List<Car> skippedCar = skipNCars(cars, 5);
         System.out.println(skippedCar);
+        System.out.println("Question 38 =====================");
+        List<Car> limitedCars= limitToNCars(cars,2);
+        System.out.println(limitedCars);
+        System.out.println("Question 39 =====================");
+        System.out.println(CarOps.distinctCarColors(getCarList()));
+        System.out.println("Question 40 =====================");
+        CarOps.concatenateMakeAndModel(getCarList());
+        System.out.println("Question 41 =====================");
+        System.out.println(CarOps.findFirstCar(getCarList()));
+        System.out.println("Question 42 =====================");
+        System.out.println(CarOps.findAnyCAr(getCarList()));
+        System.out.println("Question 43 =====================");
+        List<Car> uniqueCars = CarOps.removeDuplicateCars(getCarList());
+        uniqueCars.forEach(System.out::println);
+        System.out.println("Question 44 =====================");
+        double thresholdPrice = 25000.0;
+        Map<Boolean,List<Car>> carsPartitioned=CarOps.partitionByPrice(getCarList(),thresholdPrice);
+        System.out.println("Cars above "+ thresholdPrice+ ":");
+        carsPartitioned.get(true).forEach(System.out::println);
+        System.out.println("Cars below or equal to "+thresholdPrice+ ":");
+        carsPartitioned.get(false).forEach(System.out::println);
+        System.out.println("Question 45 =====================");
+        System.out.println(CarOps.totalPriceByMake(getCarList()));
+        System.out.println("Question 46 =====================");
+        System.out.println(CarOps.joiningCarNames(getCarList()));
+        System.out.println("Question 47 =====================");
+        CarOps.peekAndPrint(cars);
+        System.out.println("Question 48 =====================");
+        System.out.println(CarOps.averagePriceByMake(getCarList()));
+        System.out.println("Question 49 =====================");
+        System.out.println(CarOps.joiningAllCarDetails(getCarList()));
+        System.out.println("Question 50 =====================");
+        System.out.println(CarOps.findNewestCar(getCarList()));
 
-        System.out.println("Question38 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<Car> limitCar = limitingTheFirstNCars(cars, 10);
-        System.out.println(limitCar);
-
-        System.out.println("Question39 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<String> distinct = listOfDistinctCarColor(cars);
-        System.out.println("The distinct car colors are " + distinct);
-
-        System.out.println("Question40 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<String> concatenate = concatenatingMakeAndModel(cars);
-        System.out.println(concatenate);
-
-        System.out.println("Question41 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Optional<Car> findFirst = findTheFirstCar(cars);
-        System.out.println(findFirst);
-
-        System.out.println("Question42 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Optional<Car> findAny = findAnyCar(cars);
-        System.out.println(findAny);
-
-        System.out.println("Question43 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<Car> removeDuplicates = removeDuplicateCars(cars);
-        System.out.println(removeDuplicates);
-        System.out.println(removeDuplicates.size());
-
-
-        System.out.println("Question44 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Map<Boolean, List<Car>> price = highPriceAndLowPrice(cars, 50000);
-        System.out.println(price);
-        System.out.println(price.size());
-
-        System.out.println("Question45 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Map<String, Double> calculatePrice = calculateTotalPriceByMake(cars);
-        System.out.println(calculatePrice);
-
-        System.out.println("Question46 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        String joinCarName = joinCarsByNames(cars);
-        System.out.println(joinCarName);
-
-        System.out.println("Question47 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        printCarDetails(cars);
-
-        System.out.println("Question48 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Map<String, Double> averagePrice = averagePriceOfCarsByMake(cars);
-        System.out.println(averagePrice);
-
-        System.out.println("Question49 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        String concat = concatenateAllCarDetails(cars);
-        System.out.println(concat);
-
-        List<Car> theNewestCar = newestCarFromTheList(cars);
-        System.out.println("The newest car are: " + theNewestCar);
 
     }
+
 
 }
